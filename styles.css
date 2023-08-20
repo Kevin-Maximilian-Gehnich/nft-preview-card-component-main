@@ -1,0 +1,254 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+    margin: 0;
+}
+
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+:root {
+    --ff-Base: "Outfit", "sans-serif";
+
+    --fw-300: 300;
+    --fw-400: 400;
+    --fw-600: 600;
+
+    --clr-Primary-softblue: hsl(215 51% 70%);
+    --clr-Primary-cyan: hsl(178 100% 50%);
+
+    --clr-Neutral-mainBG: hsl(217 54% 11%);
+    --clr-Neutral-cardBG: hsl(216 50% 16%);
+    --clr-Neutral-line: hsl(215 32% 27%);
+    --clr-Neutral-white: hsl(0 0% 100%);
+}
+
+body {
+    font-size: 18px;
+    font-family: var(--ff-Base);
+
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+
+    background-color: var(--clr-Neutral-mainBG);
+}
+
+
+main {
+    background-color: var(--clr-Neutral-cardBG);
+    border-radius: 1rem;
+
+    display: grid;
+    padding: 1.55rem;
+    max-width: 400px;
+
+    margin: 1rem;
+
+    box-shadow: 10px 10px 20px;
+}
+
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.main-img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+.overlay {
+    border-radius: 1rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: var(--clr-Primary-cyan);
+}
+
+
+.icon {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: .3s ease;
+  }
+
+.container:hover{
+    cursor: pointer;
+
+    & > .overlay {
+        opacity: .5;
+    }
+
+    & > .icon {
+        opacity: 1;
+    }
+
+}
+
+.headline:hover,
+.name-highlight:hover {
+    cursor: pointer;
+    color: var(--clr-Primary-cyan);   
+}
+
+
+.headline {
+    color: var(--clr-Neutral-white);
+    font-weight: var(--fw-600);
+}
+
+.first-text {
+    display: grid;
+    gap: 1rem;
+
+    color: var(--clr-Primary-softblue);
+}
+
+ul {
+    display: flex;
+
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.eth {
+    list-style-image: url(images/icon-ethereum.svg);
+}
+
+.days-left {
+    list-style: url(images/icon-clock.svg);
+}
+
+li:nth-child(2) {
+    color: var(--clr-Primary-cyan);
+    font-weight: var(--fw-400);
+}
+
+li:nth-child(4) {
+    color: var(--clr-Primary-softblue);
+    font-weight: var(--fw-400);
+}
+
+article {
+    display: grid;
+    gap: .5rem;
+    margin: .5rem;
+    margin-top: 1rem;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: var(--clr-Neutral-line);
+}
+
+/* .eth::before {
+    content:url(images/icon-ethereum.svg);
+}
+ 
+.days-left::before {
+    content: url(images/icon-clock.svg);
+} */
+
+.visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.profile-picture {
+    height: 45px;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: var(--clr-Neutral-white);
+}
+
+.creator {
+    display: flex;
+    color: var(--clr-Primary-softblue);
+}
+
+
+.name-highlight {
+    color: var(--clr-Neutral-white);
+}
+
+.creator-txt {
+    margin-top: .5rem;
+    margin-left: 1rem;
+}
